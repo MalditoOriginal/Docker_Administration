@@ -18,4 +18,4 @@ RUN apt-get update && apt-get install -y gcc libfcgi-dev && \
 USER alex
 CMD /bin/sh -c "nginx -g 'daemon off;' & /mini_server"
 
-HEALTHCHECK --interval=30s --timeout=3s CMD su -s /bin/sh -c "curl --fail http://localhost:80" alex || exit 1
+HEALTHCHECK --interval=30s --timeout=3s CMD su -s /bin/sh -c "curl --fail http://localhost" alex || exit 1

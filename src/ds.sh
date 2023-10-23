@@ -2,7 +2,7 @@
 
 if [ "$1" == "go" ]; then
     # Build and run the Docker container
-    docker build -t mini_server:server . && docker run -d -p 80:81 -v "$(pwd)/nginx/:/etc/nginx" --name server mini_server:server
+    docker run -d -p 80:81 -v "$(pwd)/nginx/:/etc/nginx" --name server fletamar/mini_server:server
 elif [ "$1" == "compose" ]; then
     docker-compose build && docker-compose up -d
 elif [ "$1" == "del_server" ]; then
@@ -18,7 +18,7 @@ elif [ "$1" == "status" ]; then
 elif [ "$1" == "restart" ]; then
     docker restart server
 elif [ "$1" == "dockle" ]; then
-    /Users/fletamar/goinfre/homebrew/bin/dockle -i CIS-DI-0010 mini_server:server 
+    docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock goodwithtech/dockle:v0.3.1 fletamar/mini_server:server 
 else
     echo "Unknown command: $1"
 fi
