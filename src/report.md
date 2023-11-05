@@ -131,6 +131,11 @@ Docker image and container are ready. Now we can look into **nginx** configurati
 
 ![docker](/src/Part_2/images/docker_6.png)
 
+## Export the container to a *container.tar* file with the *export* command
+
+`docker export ba0cc52a551b > container.tar`
+
+![docker](/src/Part_2/images/docker_8.png)
 
 ## Stop the container
 
@@ -138,16 +143,9 @@ Docker image and container are ready. Now we can look into **nginx** configurati
 
 ![docker](/src/Part_2/images/docker_7.png)
 
-
-## Export the container to a *container.tar* file with the *export* command
-
-`docker export ba0cc52a551b > container.tar`
-
-![docker](/src/Part_2/images/docker_8.png)
-
 ## Delete the image with `docker rmi [image_id|repository]`without removing the container first
 
-`docker rmi 61395b4c586d`
+`docker rmi -f c20060033e06`
 
 ![docker](/src/Part_2/images/docker_10.png)
 
@@ -158,7 +156,7 @@ Docker image and container are ready. Now we can look into **nginx** configurati
 ![docker](/src/Part_2/images/docker_9.png)
 
 
-## Import the container back using the *import*command
+## Import the container back using the *import* command
 
 `cat container.tar | docker import - nginx`
 
